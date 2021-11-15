@@ -15,6 +15,10 @@ npm install
 ```
 npm start
 ```
+#### OPCIONAL se incluye el archivo .env en el directorio principal
+#### este contiene la variable: 
+>  REACT_APP_API
+#### esta variable contiene el url de la api que es usado en cada metodo
 #### Esto iniciará un servidor local en el puerto 3000. 
 ```
 localhost:3000
