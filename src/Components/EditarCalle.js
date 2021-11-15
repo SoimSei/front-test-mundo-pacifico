@@ -18,11 +18,10 @@ const EditarCalle = () => {
     const navigate = useNavigate();
     const toastGuardar = useRef(null);
     const toastError = useRef(null);
+    const { REACT_APP_API } = process.env;
 
     const updateRegiones = async () => {
-        const response = await fetch(
-            `http://test-mundo-pacifico.test/api/regiones`
-        );
+        const response = await fetch(`http://${REACT_APP_API}regiones`);
         const data = await response.json();
         Object.keys(data).map(function (key) {
             setRegiones((regiones) => [
@@ -37,7 +36,7 @@ const EditarCalle = () => {
 
     const updateProvincias = async (id) => {
         const response = await fetch(
-            `http://test-mundo-pacifico.test/api/regiones/provincias/${id}`
+            `http://${REACT_APP_API}regiones/provincias/${id}`
         );
         const data = await response.json();
         Object.keys(data).map(function (key) {
@@ -52,7 +51,7 @@ const EditarCalle = () => {
     };
     const updateCiudades = async (id) => {
         const response = await fetch(
-            `http://test-mundo-pacifico.test/api/provincias/ciudades/${id}`
+            `http://${REACT_APP_API}provincias/ciudades/${id}`
         );
         const data = await response.json();
         Object.keys(data).map(function (key) {
@@ -67,7 +66,7 @@ const EditarCalle = () => {
     };
 
     const updateCalle = () => {
-        fetch(`http://test-mundo-pacifico.test/api/calles/${id}`, {
+        fetch(`http://${REACT_APP_API}calles/${id}`, {
             method: "PUT",
             body: JSON.stringify({
                 idCiudad: ciudad,
@@ -94,7 +93,7 @@ const EditarCalle = () => {
     };
 
     const agregarCalle = () => {
-        fetch(`http://test-mundo-pacifico.test/api/calles`, {
+        fetch(`http://${REACT_APP_API}calles`, {
             method: "POST",
             body: JSON.stringify({
                 idCiudad: ciudad,
@@ -155,7 +154,7 @@ const EditarCalle = () => {
     useEffect(() => {
         const getDatos = async () => {
             const response = await fetch(
-                `http://test-mundo-pacifico.test/api/datosCalleLista/${id}`
+                `http://${REACT_APP_API}datosCalleLista/${id}`
             );
             const data = await response.json();
             setCalle(data.calle);

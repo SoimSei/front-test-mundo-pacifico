@@ -9,15 +9,14 @@ import { useNavigate } from "react-router-dom";
 
 const Calle = () => {
     const [datos, setDatos] = useState([]);
+    const { REACT_APP_API } = process.env;
 
     const toast = useRef(null);
     const navigate = useNavigate();
 
     const getDatos = async () => {
         setDatos([]);
-        const response = await fetch(
-            `http://test-mundo-pacifico.test/api/datosCalleLista`
-        );
+        const response = await fetch(`http://${REACT_APP_API}datosCalleLista`);
         const data = await response.json();
         setDatos(data);
     };
@@ -38,7 +37,7 @@ const Calle = () => {
     });
 
     const deleteCalle = (idC) => {
-        fetch(`http://test-mundo-pacifico.test/api/calles/${idC}`, {
+        fetch(`http://${REACT_APP_API}calles/${idC}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
